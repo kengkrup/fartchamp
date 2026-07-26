@@ -312,19 +312,19 @@ export function getLeaderboard(filter = 'all-time') {
 export function seedMockData() {
   if (getAllSounds().length > 0) return; // Already seeded
 
-  const mockSounds = [
-    { title: 'Thunder Clap Supreme', description: 'เสียงตดสายฟ้าฟาดที่สั่นสะเทือนแผ่นดิน', category: 'thunder', likes: 142, plays: 891, wins: 23, losses: 5 },
-    { title: 'The Silent Assassin', description: 'เงียบ... แต่ร้ายกาจ', category: 'silent-deadly', likes: 98, plays: 567, wins: 18, losses: 8 },
-    { title: 'Musical Masterpiece', description: 'เสียงตดที่ไพเราะดุจดนตรี', category: 'musical', likes: 234, plays: 1203, wins: 31, losses: 3 },
-    { title: 'Machine Gun Salute', description: 'ปูนปูนปูนปูน... ยิงรัว!', category: 'machine-gun', likes: 176, plays: 934, wins: 25, losses: 7 },
-    { title: 'Classic Rumbler', description: 'เสียงตดคลาสสิคที่ทุกคนรัก', category: 'classic', likes: 89, plays: 445, wins: 12, losses: 15 },
-    { title: 'Squeaky Clean', description: 'แหลมใส เหมือนยางถูพื้น', category: 'squeaker', likes: 156, plays: 678, wins: 20, losses: 9 },
-    { title: 'Atomic Bomb', description: 'ระเบิดนิวเคลียร์จากก้น', category: 'epic', likes: 312, plays: 1567, wins: 42, losses: 2 },
-    { title: 'Wet & Wild', description: 'อันตราย... อาจมีผลข้างเคียง', category: 'wet', likes: 67, plays: 890, wins: 8, losses: 20 },
-    { title: 'The Trombone', description: 'เหมือนเป่าทรอมโบน', category: 'musical', likes: 198, plays: 823, wins: 28, losses: 6 },
-    { title: 'Ninja Puff', description: 'มาและไปอย่างเงียบๆ', category: 'silent-deadly', likes: 145, plays: 612, wins: 16, losses: 11 },
-    { title: 'Dragon Breath (จากข้างล่าง)', description: 'มังกรพ่นไฟ... จากด้านหลัง', category: 'epic', likes: 267, plays: 1345, wins: 35, losses: 4 },
-    { title: 'The Whoopee Cushion', description: 'เสียงคลาสสิคจากหมอนตด', category: 'classic', likes: 123, plays: 556, wins: 14, losses: 13 },
+  const defaultSounds = [
+    { title: 'Thunder Clap Supreme', description: 'An earth-shattering thunderous roar', category: 'thunder', likes: 142, plays: 891, wins: 23, losses: 5 },
+    { title: 'The Silent Assassin', description: 'Quiet... but deadly', category: 'silent-deadly', likes: 98, plays: 567, wins: 18, losses: 8 },
+    { title: 'Musical Masterpiece', description: 'A fart as beautiful as music', category: 'musical', likes: 234, plays: 1203, wins: 31, losses: 3 },
+    { title: 'Machine Gun Salute', description: 'Rat-tat-tat-tat... rapid fire!', category: 'machine-gun', likes: 176, plays: 934, wins: 25, losses: 7 },
+    { title: 'Classic Rumbler', description: 'The classic fart everyone loves', category: 'classic', likes: 89, plays: 445, wins: 12, losses: 15 },
+    { title: 'Squeaky Clean', description: 'High-pitched, like rubbing a balloon', category: 'squeaker', likes: 156, plays: 678, wins: 20, losses: 9 },
+    { title: 'Atomic Bomb', description: 'A nuclear explosion from below', category: 'epic', likes: 312, plays: 1567, wins: 42, losses: 2 },
+    { title: 'Wet & Wild', description: 'Dangerous... might have side effects', category: 'wet', likes: 67, plays: 890, wins: 8, losses: 20 },
+    { title: 'The Trombone', description: 'Sounds like playing a trombone', category: 'musical', likes: 198, plays: 823, wins: 28, losses: 6 },
+    { title: 'Ninja Puff', description: 'Comes and goes silently', category: 'silent-deadly', likes: 145, plays: 612, wins: 16, losses: 11 },
+    { title: 'Dragon Breath (From below)', description: 'A dragon breathing fire... from the back', category: 'epic', likes: 267, plays: 1345, wins: 35, losses: 4 },
+    { title: 'The Whoopee Cushion', description: 'Classic whoopee cushion sound', category: 'classic', likes: 123, plays: 556, wins: 14, losses: 13 },
   ];
 
   const mockUsers = [
@@ -333,7 +333,7 @@ export function seedMockData() {
     'MightyRumbler', 'NuclearBoomer', 'VolcanicVent', 'SpicyBlaster',
   ];
 
-  mockSounds.forEach((mock, index) => {
+  defaultSounds.forEach((mock, index) => {
     const sound = {
       id: uuidv4(),
       ...mock,
@@ -348,15 +348,15 @@ export function seedMockData() {
 
   // Create some mock comments
   const sounds = getAllSounds();
-  const mockComments = [
-    'เสียงตดที่ยิ่งใหญ่ที่สุดเท่าที่เคยได้ยิน! 💨',
-    'LMAOOO ตายแล้ว 555555',
-    'แชมป์ตัวจริง 🏆',
-    'เสียงนี้ทำให้โลกสั่นสะเทือน!',
-    'ขอสูตรหน่อยครับ กินอะไรมา? 🤣',
-    'พี่ครับ... ตดแบบนี้ต้องมีใบอนุญาต',
-    'เสียงนี้เปลี่ยนชีวิตผมไปตลอดกาล',
-    'สุดยอดมากครับ respect 🙏',
+  const sampleComments = [
+    'Greatest fart sound I have ever heard! 💨',
+    'LMAOOO im dead 😂',
+    'A true champion 🏆',
+    'This sound shook the earth!',
+    'Drop the recipe... what did you eat? 🤣',
+    'Bro... you need a license for that.',
+    'This sound changed my life forever.',
+    'Amazing, much respect 🙏',
   ];
 
   sounds.forEach((sound) => {
@@ -365,7 +365,7 @@ export function seedMockData() {
       const comment = {
         id: uuidv4(),
         soundId: sound.id,
-        text: mockComments[Math.floor(Math.random() * mockComments.length)],
+        text: sampleComments[Math.floor(Math.random() * sampleComments.length)],
         userId: `user-${Math.floor(Math.random() * 12)}`,
         userName: mockUsers[Math.floor(Math.random() * mockUsers.length)],
         likes: Math.floor(Math.random() * 20),

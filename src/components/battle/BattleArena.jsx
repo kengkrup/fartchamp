@@ -44,8 +44,8 @@ export default function BattleArena() {
     return (
       <div className="empty-state">
         <div className="empty-state__icon">⚔️</div>
-        <h3 className="empty-state__title">ยังไม่มี Battle</h3>
-        <p className="empty-state__text">ต้องมีเสียงตดอย่างน้อย 2 เสียงถึงจะเริ่ม Battle ได้</p>
+        <h3 className="empty-state__title">No Battles Available</h3>
+        <p className="empty-state__text">Need at least 2 fart sounds to start a battle.</p>
       </div>
     );
   }
@@ -62,14 +62,14 @@ export default function BattleArena() {
         {/* Contestant 1 */}
         <div className={`glass-card battle-card slide-in-left ${userVote === sound1.id ? 'battle-card--winner' : ''}`}>
           <div className="battle-card__rank">
-            <span className="badge badge--purple">ผู้ท้าชิง #1</span>
+            <span className="badge badge--purple">Challenger #1</span>
           </div>
           <div className="sound-card__avatar" style={{ width: 56, height: 56, fontSize: 'var(--text-xl)', margin: '0 auto var(--space-md)' }}>
             {getInitials(sound1.userName)}
           </div>
           <h3 className="battle-card__name">{sound1.title}</h3>
           <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', marginBottom: 'var(--space-md)' }}>
-            โดย {sound1.userName}
+            by {sound1.userName}
           </p>
 
           <SoundPlayer soundId={sound1.id} audioUrl={sound1.audioUrl} duration={sound1.audioDuration} />
@@ -86,7 +86,7 @@ export default function BattleArena() {
             disabled={alreadyVoted}
             style={{ marginTop: 'var(--space-md)' }}
           >
-            {userVote === sound1.id ? '✅ โหวตแล้ว!' : alreadyVoted ? 'โหวตแล้ว' : '💨 โหวตเสียงนี้!'}
+            {userVote === sound1.id ? '✅ Voted!' : alreadyVoted ? 'Voted' : '💨 Vote for this!'}
           </button>
         </div>
 
@@ -100,14 +100,14 @@ export default function BattleArena() {
         {/* Contestant 2 */}
         <div className={`glass-card battle-card slide-in-right ${userVote === sound2.id ? 'battle-card--winner' : ''}`}>
           <div className="battle-card__rank">
-            <span className="badge badge--yellow">ผู้ท้าชิง #2</span>
+            <span className="badge badge--yellow">Challenger #2</span>
           </div>
           <div className="sound-card__avatar" style={{ width: 56, height: 56, fontSize: 'var(--text-xl)', margin: '0 auto var(--space-md)' }}>
             {getInitials(sound2.userName)}
           </div>
           <h3 className="battle-card__name">{sound2.title}</h3>
           <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', marginBottom: 'var(--space-md)' }}>
-            โดย {sound2.userName}
+            by {sound2.userName}
           </p>
 
           <SoundPlayer soundId={sound2.id} audioUrl={sound2.audioUrl} duration={sound2.audioDuration} />
@@ -124,7 +124,7 @@ export default function BattleArena() {
             disabled={alreadyVoted}
             style={{ marginTop: 'var(--space-md)' }}
           >
-            {userVote === sound2.id ? '✅ โหวตแล้ว!' : alreadyVoted ? 'โหวตแล้ว' : '💨 โหวตเสียงนี้!'}
+            {userVote === sound2.id ? '✅ Voted!' : alreadyVoted ? 'Voted' : '💨 Vote for this!'}
           </button>
         </div>
       </div>
@@ -133,7 +133,7 @@ export default function BattleArena() {
       {battles.length > 1 && (
         <div className="battle-page__next">
           <button className="btn btn--secondary" onClick={nextBattle}>
-            <FiRefreshCw /> Battle ถัดไป
+            <FiRefreshCw /> Next Battle
           </button>
         </div>
       )}

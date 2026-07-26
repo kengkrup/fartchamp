@@ -78,11 +78,11 @@ export function validateAudioFile(file) {
   ];
 
   if (file.size > maxSize) {
-    return { valid: false, error: 'ไฟล์ใหญ่เกินไป (สูงสุด 5MB)' };
+    return { valid: false, error: 'File too large (max 5MB)' };
   }
 
-  if (!validTypes.includes(file.type) && !file.name.match(/\.(mp3|wav|ogg|m4a|webm)$/i)) {
-    return { valid: false, error: 'รองรับเฉพาะไฟล์เสียง (MP3, WAV, OGG, M4A, WebM)' };
+  if (!file.type.startsWith('audio/')) {
+    return { valid: false, error: 'Only audio files are supported (MP3, WAV, OGG, M4A, WebM)' };
   }
 
   return { valid: true };

@@ -60,10 +60,10 @@ export default function SoundUploader({ onFileSelect }) {
             <FiUploadCloud size={48} style={{ color: 'var(--color-toxic-green)' }} />
           </div>
           <p className="upload-area__text">
-            ลากไฟล์เสียงมาวางที่นี่
+            Drag & drop audio file here
           </p>
           <p className="upload-area__hint">
-            หรือคลิกเพื่อเลือกไฟล์ • MP3, WAV, OGG, M4A • สูงสุด 5MB
+            <span className="upload-page__help-text">or click to browse • MP3, WAV, OGG, M4A • Max 5MB</span>
           </p>
           <input
             ref={fileInputRef}

@@ -8,7 +8,7 @@
 **FartChamp** is a humorous web app for fart sound competitions. Users upload sounds, battle 1v1, vote, comment, and compete for champion status.
 
 **Stack**: React 19 + Vite + Vanilla CSS + localStorage (Firebase-ready)
-**Language**: Thai (ภาษาไทย) UI
+**Language**: English UI
 **Theme**: Dark mode with toxic green neon (#39ff14) accents
 
 ## Architecture
@@ -40,11 +40,11 @@
 
 2. **CSS Custom Properties**: All design tokens in `:root`. No CSS-in-JS or Tailwind. BEM naming.
 
-3. **Mock Data Seeding**: `seedMockData()` auto-creates 12 sample sounds with Thai descriptions, comments, and battles on first load.
+3. **Mock Data Seeding**: `seedMockData()` auto-creates 12 sample sounds with English descriptions, comments, and battles on first load.
 
 4. **Demo Audio Mode**: `SoundPlayer` works without actual audio files — simulates playback with timer and animations.
 
-5. **Thai Language**: All UI text is in Thai. Variable names and code comments in English.
+5. **Language**: All UI text is in English. Variable names and code comments are also in English.
 
 ## File Reference
 
@@ -65,7 +65,7 @@ When modifying this project:
 
 1. **Use CSS custom properties** from `index.css` for all colors/spacing
 2. **Follow BEM naming** for CSS classes
-3. **Keep Thai text** for user-facing strings
+3. **Keep English text** for user-facing strings
 4. **Use `useCallback`** for handlers, `useMemo` for derived data
 5. **Export default** for all components
 6. **Use react-icons/fi** (Feather icons) for iconography

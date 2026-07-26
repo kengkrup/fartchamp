@@ -15,7 +15,7 @@ export default function SoundCard({ sound, showComments = false }) {
     if (navigator.share) {
       navigator.share({
         title: sound.title,
-        text: `ฟังเสียงตด "${sound.title}" บน FartChamp! 💨`,
+        text: `Listen to the fart sound "${sound.title}" on FartChamp! 💨`,
         url: window.location.origin,
       });
     } else {
@@ -32,7 +32,7 @@ export default function SoundCard({ sound, showComments = false }) {
         <div className="sound-card__info">
           <h3 className="sound-card__title">{sound.title}</h3>
           <span className="sound-card__user">
-            โดย {sound.userName} • {timeAgo(sound.createdAt)}
+            by {sound.userName} • {timeAgo(sound.createdAt)}
           </span>
         </div>
         {category && (
@@ -64,7 +64,7 @@ export default function SoundCard({ sound, showComments = false }) {
           onClick={() => setCommentsOpen(!commentsOpen)}
         >
           <FiMessageCircle className="like-btn__icon" />
-          <span>คอมเมนต์</span>
+          <span>Comments</span>
         </button>
 
         <div className="sound-card__stat" style={{ marginLeft: 'auto' }}>

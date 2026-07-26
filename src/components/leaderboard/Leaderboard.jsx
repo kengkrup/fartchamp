@@ -7,9 +7,9 @@ export default function Leaderboard() {
   const items = useMemo(() => getLeaderboard(filter), [filter]);
 
   const filters = [
-    { id: 'all-time', label: 'ตลอดกาล' },
-    { id: 'weekly', label: 'สัปดาห์นี้' },
-    { id: 'monthly', label: 'เดือนนี้' },
+    { id: 'all-time', label: 'All-time' },
+    { id: 'weekly', label: 'Weekly' },
+    { id: 'monthly', label: 'Monthly' },
   ];
 
   const getRankClass = (index) => {
@@ -34,7 +34,7 @@ export default function Leaderboard() {
   return (
     <div className="leaderboard">
       <div className="leaderboard__header">
-        <h2 className="section__title gradient-text">🏆 อันดับ</h2>
+        <h2 className="section__title gradient-text">🏆 Rankings</h2>
         <div className="leaderboard__filters">
           {filters.map((f) => (
             <button
@@ -52,8 +52,8 @@ export default function Leaderboard() {
         {items.length === 0 ? (
           <div className="empty-state">
             <div className="empty-state__icon">🏜️</div>
-            <h3 className="empty-state__title">ยังไม่มีข้อมูล</h3>
-            <p className="empty-state__text">อัปโหลดเสียงตดเพื่อขึ้น Leaderboard!</p>
+            <h3 className="empty-state__title">No data yet</h3>
+            <p className="empty-state__text">Upload a fart sound to get on the Leaderboard!</p>
           </div>
         ) : (
           items.slice(0, 20).map((item, index) => {
@@ -81,7 +81,7 @@ export default function Leaderboard() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)' }}>
                   <div style={{ textAlign: 'right' }}>
                     <div className="leaderboard__score">{formatNumber(item.score)}</div>
-                    <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>คะแนน</div>
+                    <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>Score</div>
                   </div>
                   <div style={{ display: 'flex', gap: 'var(--space-sm)', fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
                     <span>💨 {item.likes}</span>

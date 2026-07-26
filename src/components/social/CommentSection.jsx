@@ -19,14 +19,14 @@ export default function CommentSection({ soundId }) {
   return (
     <div className="comment-section">
       <h4 className="comment-section__title">
-        💬 คอมเมนต์ ({comments.length})
+        💬 Comments ({comments.length})
       </h4>
 
       <form className="comment-section__form" onSubmit={handleSubmit}>
         <input
           type="text"
           className="input comment-section__input"
-          placeholder="เขียนคอมเมนต์..."
+          placeholder="Write a comment..."
           value={text}
           onChange={(e) => setText(e.target.value)}
           maxLength={200}
@@ -39,7 +39,7 @@ export default function CommentSection({ soundId }) {
       <div className="stagger-children">
         {comments.length === 0 ? (
           <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', padding: 'var(--space-lg) 0', fontSize: 'var(--text-sm)' }}>
-            ยังไม่มีคอมเมนต์ เป็นคนแรกเลย! 💨
+            No comments yet. Be the first! 💨
           </p>
         ) : (
           comments.map((comment) => (

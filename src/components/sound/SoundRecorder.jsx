@@ -30,7 +30,7 @@ export default function SoundRecorder({ onRecordingComplete }) {
         });
       }, 1000);
     } catch (err) {
-      alert('ไม่สามารถเข้าถึงไมโครโฟนได้ กรุณาอนุญาตการใช้งานไมค์');
+      alert('Microphone access denied. Please allow microphone permissions.');
     }
   }, []);
 
@@ -82,7 +82,7 @@ export default function SoundRecorder({ onRecordingComplete }) {
         {formatDuration(timer)}
         {state === 'recording' && (
           <span style={{ fontSize: 'var(--text-sm)', color: 'var(--color-danger)', marginLeft: 'var(--space-sm)' }}>
-            ● กำลังอัด...
+            ● Recording...
           </span>
         )}
       </div>
@@ -96,23 +96,23 @@ export default function SoundRecorder({ onRecordingComplete }) {
       <div className="recorder__controls">
         {state === 'idle' && (
           <button className="btn btn--primary btn--lg" onClick={startRecording}>
-            <FiMic /> เริ่มอัดเสียง
+            <FiMic /> Start Recording
           </button>
         )}
 
         {state === 'recording' && (
           <button className="btn btn--danger btn--lg" onClick={stopRecording}>
-            <FiSquare /> หยุดอัด
+            <FiSquare /> Stop Recording
           </button>
         )}
 
         {state === 'preview' && (
           <>
             <button className="btn btn--secondary" onClick={discardRecording}>
-              <FiTrash2 /> อัดใหม่
+              <FiTrash2 /> Record Again
             </button>
             <button className="btn btn--primary" onClick={confirmRecording}>
-              <FiCheck /> ใช้เสียงนี้
+              <FiCheck /> Use This Sound
             </button>
           </>
         )}
@@ -124,7 +124,7 @@ export default function SoundRecorder({ onRecordingComplete }) {
           fontSize: 'var(--text-sm)',
           color: 'var(--color-text-muted)',
         }}>
-          อัดเสียงได้สูงสุด 30 วินาที 💨
+          Record up to 30 seconds 💨
         </p>
       )}
     </div>

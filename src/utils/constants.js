@@ -30,5 +30,5 @@ export const ACCEPTED_AUDIO_TYPES = ['.mp3', '.wav', '.ogg', '.m4a', '.webm'];
 export const LEADERBOARD_FILTERS = ['all-time', 'weekly', 'monthly'];
 
 export const APP_NAME = 'FartChamp';
-export const APP_TAGLINE = 'ปล่อยพลัง... สู่ตำนาน 💨';
-export const APP_DESCRIPTION = 'แพลตฟอร์มแข่งขันเสียงตดที่ยิ่งใหญ่ที่สุดในจักรวาล';
+export const APP_TAGLINE = 'Unleash the Power... Become a Legend 💨';
+export const APP_DESCRIPTION = 'The greatest fart sound competition platform in the universe';

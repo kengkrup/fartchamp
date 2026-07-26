@@ -34,30 +34,30 @@ export default function HomePage() {
             {APP_TAGLINE}
           </h1>
           <p className="hero__subtitle">
-            แพลตฟอร์มแข่งขันเสียงตดที่ยิ่งใหญ่ที่สุดในจักรวาล!
-            อัปโหลดเสียง, Battle 1v1, โหวต และพิชิตตำแหน่งแชมป์!
+            The greatest fart sound competition platform in the universe!<br />
+            Upload, Battle 1v1, Vote, and become the Champion!
           </p>
-          <div className="hero__cta">
+          <div className="hero__actions">
             <Link to="/upload" className="btn btn--primary btn--lg">
-              🎙️ อัปโหลดเสียงตด
+              🎙️ Upload a Fart
             </Link>
             <Link to="/battle" className="btn btn--secondary btn--lg">
-              ⚔️ เข้า Battle Arena
+              ⚔️ Enter Battle Arena
             </Link>
           </div>
 
           <div className="hero__stats">
-            <div className="hero__stat">
-              <div className="hero__stat-value neon-glow">{formatNumber(stats.totalSounds)}</div>
-              <div className="hero__stat-label">เสียงตด</div>
+            <div className="hero__stat-card">
+              <div className="hero__stat-value">{formatNumber(stats.totalSounds)}</div>
+              <div className="hero__stat-label">Farts</div>
             </div>
-            <div className="hero__stat">
-              <div className="hero__stat-value neon-glow">{formatNumber(stats.totalPlays)}</div>
-              <div className="hero__stat-label">ครั้งที่ฟัง</div>
+            <div className="hero__stat-card">
+              <div className="hero__stat-value">{formatNumber(stats.totalPlays)}</div>
+              <div className="hero__stat-label">Plays</div>
             </div>
-            <div className="hero__stat">
-              <div className="hero__stat-value neon-glow">{formatNumber(stats.totalLikes)}</div>
-              <div className="hero__stat-label">ถูกใจ</div>
+            <div className="hero__stat-card">
+              <div className="hero__stat-value">{formatNumber(stats.totalLikes)}</div>
+              <div className="hero__stat-label">Likes</div>
             </div>
           </div>
         </div>
@@ -69,11 +69,11 @@ export default function HomePage() {
           <div className="container">
             <div className="section__header">
               <div>
-                <h2 className="section__title">🔥 เสียงตดยอดฮิตประจำสัปดาห์</h2>
-                <p className="section__subtitle">เสียงที่ได้รับความนิยมสูงสุดในสัปดาห์นี้</p>
+                <h2 className="section__title">🔥 Top Farts of the Week</h2>
+                <p className="section__subtitle">Most popular fart sounds this week</p>
               </div>
-              <Link to="/leaderboard" className="btn btn--ghost">
-                ดูทั้งหมด →
+              <Link to="/leaderboard?filter=weekly" className="btn btn--text">
+                View All →
               </Link>
             </div>
             <div className="sound-grid">
@@ -90,8 +90,8 @@ export default function HomePage() {
         <div className="container">
           <div className="section__header">
             <div>
-              <h2 className="section__title">🆕 เสียงตดล่าสุด</h2>
-              <p className="section__subtitle">เสียงตดใหม่ล่าสุดจากคอมมูนิตี้</p>
+              <h2 className="section__title">🆕 Latest Farts</h2>
+              <p className="section__subtitle">Newest fart sounds from the community</p>
             </div>
           </div>
           <div className="sound-grid">
@@ -105,15 +105,17 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="section" style={{ background: 'var(--color-bg-secondary)' }}>
         <div className="container" style={{ textAlign: 'center', maxWidth: 600 }}>
-          <h2 className="section__title" style={{ marginBottom: 'var(--space-md)' }}>
-            <span className="gradient-text">พร้อมจะเป็นแชมป์หรือยัง?</span>
-          </h2>
-          <p style={{ color: 'var(--color-text-secondary)', marginBottom: 'var(--space-xl)' }}>
-            อัปโหลดเสียงตดที่ดีที่สุดของคุณ แล้วมาพิสูจน์ฝีมือในสนาม Battle!
-          </p>
-          <Link to="/upload" className="btn btn--primary btn--lg">
-            🚀 เริ่มเลย!
-          </Link>
+          <div className="cta__content">
+            <h2 className="cta__title">
+              <span className="gradient-text">Ready to become a Champion?</span>
+            </h2>
+            <p className="cta__description">
+              Upload your best fart sound and prove your skills in the Battle Arena!
+            </p>
+            <Link to="/upload" className="btn btn--primary btn--lg">
+              🚀 Get Started!
+            </Link>
+          </div>
         </div>
       </section>
     </>

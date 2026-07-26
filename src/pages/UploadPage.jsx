@@ -46,12 +46,12 @@ export default function UploadPage() {
   return (
     <div className="upload-page">
       <div className="container">
-        <div className="upload-page__header">
-          <h1 className="upload-page__title">
-            🎙️ <span className="gradient-text">อัปโหลดเสียงตด</span>
+        <div className="page-header">
+          <h1 className="page-header__title">
+            🎙️ <span className="gradient-text">Upload Fart Sound</span>
           </h1>
-          <p style={{ color: 'var(--color-text-secondary)' }}>
-            แชร์เสียงตดของคุณกับโลก! 💨
+          <p className="page-header__subtitle">
+            Share your fart sound with the world! 💨
           </p>
         </div>
 
@@ -60,17 +60,17 @@ export default function UploadPage() {
           <div className="tabs">
             <button
               type="button"
-              className={`tab ${tab === 'upload' ? 'tab--active' : ''}`}
+              className={`upload-page__tab ${tab === 'upload' ? 'active' : ''}`}
               onClick={() => setTab('upload')}
             >
-              📁 อัปโหลดไฟล์
+              📁 Upload File
             </button>
             <button
               type="button"
-              className={`tab ${tab === 'record' ? 'tab--active' : ''}`}
+              className={`upload-page__tab ${tab === 'record' ? 'active' : ''}`}
               onClick={() => setTab('record')}
             >
-              🎙️ อัดเสียง
+              🎙️ Record Audio
             </button>
           </div>
 
@@ -82,12 +82,12 @@ export default function UploadPage() {
           )}
 
           {/* Sound Info */}
-          <div className="upload-page__field">
-            <label className="upload-page__label">ชื่อเสียงตด *</label>
+          <div className="upload-page__form-group">
+            <label className="upload-page__label">Fart Name *</label>
             <input
               type="text"
-              className="input"
-              placeholder="เช่น Thunder Clap Supreme"
+              className="upload-page__input"
+              placeholder="e.g., Thunder Clap Supreme"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               maxLength={50}
@@ -95,19 +95,19 @@ export default function UploadPage() {
             />
           </div>
 
-          <div className="upload-page__field">
-            <label className="upload-page__label">รายละเอียด</label>
+          <div className="upload-page__form-group">
+            <label className="upload-page__label">Description</label>
             <textarea
-              className="input textarea"
-              placeholder="บรรยายเสียงตดของคุณ..."
+              className="upload-page__input upload-page__textarea"
+              placeholder="Describe your fart sound..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               maxLength={200}
             />
           </div>
 
-          <div className="upload-page__field">
-            <label className="upload-page__label">ประเภท</label>
+          <div className="upload-page__form-group">
+            <label className="upload-page__label">Category</label>
             <div className="upload-page__categories">
               {CATEGORIES.map((cat) => (
                 <button
@@ -125,11 +125,10 @@ export default function UploadPage() {
           {/* Submit */}
           <button
             type="submit"
-            className="btn btn--primary btn--lg"
-            disabled={!title.trim() || submitting}
-            style={{ width: '100%', marginTop: 'var(--space-md)' }}
+            className="btn btn--primary btn--lg btn--full"
+            disabled={!audioData || !title.trim() || submitting}
           >
-            {submitting ? '⏳ กำลังอัปโหลด...' : '🚀 ปล่อยเสียงสู่จักรวาล!'}
+            {submitting ? '⏳ Uploading...' : '🚀 Unleash to the Universe!'}
           </button>
         </form>
       </div>

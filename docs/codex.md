@@ -8,7 +8,7 @@ You are working on **FartChamp**, a fart sound competition platform. The app is 
 
 ## Rules
 
-- The UI language is **Thai (ภาษาไทย)**. All user-facing text must be in Thai.
+- The UI language is **English**. All user-facing text must be in English.
 - Code comments and variable names are in **English**.
 - Use **CSS custom properties** from `src/styles/index.css`. Never hardcode colors or spacing.
 - Follow **BEM naming** for CSS: `.block__element--modifier`

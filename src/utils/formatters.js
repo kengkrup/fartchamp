@@ -32,12 +32,12 @@ export function timeAgo(date) {
   const diffWeek = Math.floor(diffDay / 7);
   const diffMonth = Math.floor(diffDay / 30);
 
-  if (diffSec < 60) return 'เมื่อกี้';
-  if (diffMin < 60) return `${diffMin} นาทีที่แล้ว`;
-  if (diffHour < 24) return `${diffHour} ชั่วโมงที่แล้ว`;
-  if (diffDay < 7) return `${diffDay} วันที่แล้ว`;
-  if (diffWeek < 4) return `${diffWeek} สัปดาห์ที่แล้ว`;
-  return `${diffMonth} เดือนที่แล้ว`;
+  if (diffSec < 60) return 'just now';
+  if (diffMin < 60) return `${diffMin}m ago`;
+  if (diffHour < 24) return `${diffHour}h ago`;
+  if (diffDay < 7) return `${diffDay}d ago`;
+  if (diffWeek < 4) return `${diffWeek}w ago`;
+  return `${diffMonth}mo ago`;
 }
 
 /**

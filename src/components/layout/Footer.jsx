@@ -14,11 +14,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="footer__title">Navigation</h4>
-            <Link to="/" className="footer__link">หน้าแรก</Link>
-            <Link to="/battle" className="footer__link">Battle Arena</Link>
-            <Link to="/upload" className="footer__link">อัปโหลดเสียง</Link>
-            <Link to="/leaderboard" className="footer__link">Leaderboard</Link>
+            <nav className="footer__nav">
+              <h4 className="footer__title">Navigation</h4>
+              <Link to="/" className="footer__link">Home</Link>
+              <Link to="/battle" className="footer__link">Battle Arena</Link>
+              <Link to="/upload" className="footer__link">Upload Sound</Link>
+              <Link to="/leaderboard" className="footer__link">Leaderboard</Link>
+            </nav>
           </div>
 
           <div>
@@ -30,7 +32,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>© {new Date().getFullYear()} {APP_NAME}. สร้างด้วย 💨 และ ❤️ | No actual farts were harmed in the making of this website.</p>
+          <p>© {new Date().getFullYear()} {APP_NAME}. Made with 💨 and ❤️ | No actual farts were harmed in the making of this website.</p>
         </div>
       </div>
     </footer>

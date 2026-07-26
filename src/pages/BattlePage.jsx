@@ -5,11 +5,9 @@ export default function BattlePage() {
     <div className="battle-page">
       <div className="container">
         <div className="battle-page__header">
-          <h1 className="battle-page__title">
-            ⚔️ <span className="gradient-text">Battle Arena</span>
-          </h1>
-          <p className="battle-page__subtitle">
-            ฟังเสียงตดทั้งสองฝั่ง แล้วโหวตให้กับเสียงที่คุณชอบ!
+          <h1 className="page-header__title">⚔️ Battle Arena</h1>
+          <p className="page-header__subtitle">
+            Listen to both fart sounds and vote for your favorite!
           </p>
         </div>
 

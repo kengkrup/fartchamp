@@ -21,12 +21,10 @@ export default function LeaderboardPage() {
   return (
     <div className="leaderboard-page">
       <div className="container">
-        <div className="leaderboard-page__header">
-          <h1 className="leaderboard-page__title">
-            🏆 <span className="gradient-text">Hall of Champions</span>
-          </h1>
-          <p style={{ color: 'var(--color-text-secondary)' }}>
-            ผู้ที่มีเสียงตดทรงพลังที่สุดในจักรวาล
+        <div className="page-header">
+          <h1 className="page-header__title">🏆 Leaderboard</h1>
+          <p className="page-header__subtitle">
+            Those with the most powerful farts in the universe
           </p>
         </div>
 
@@ -44,11 +42,13 @@ export default function LeaderboardPage() {
                     {getInitials(item.userName)}
                   </div>
                   <h3 className="podium-card__name">{item.title}</h3>
-                  <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginBottom: 'var(--space-sm)' }}>
-                    โดย {item.userName}
-                  </p>
-                  <div className="podium-card__score">{formatNumber(item.score)}</div>
-                  <div className="podium-card__label">คะแนน</div>
+                  <div className="podium-card__author">
+                    by {item.userName}
+                  </div>
+                  <div className="podium-card__score-wrap">
+                    <div className="podium-card__label">Score</div>
+                    <div className="podium-card__score">{formatNumber(item.score)}</div>
+                  </div>
                 </div>
               );
             })}

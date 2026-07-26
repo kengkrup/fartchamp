@@ -8,9 +8,9 @@ export default function Navbar() {
   const location = useLocation();
 
   const links = [
-    { path: '/', label: '🏠 หน้าแรก' },
+    { path: '/', label: '🏠 Home' },
     { path: '/battle', label: '⚔️ Battle' },
-    { path: '/upload', label: '🎙️ อัปโหลด' },
+    { path: '/upload', label: '🎙️ Upload' },
     { path: '/leaderboard', label: '🏆 Leaderboard' },
   ];
 

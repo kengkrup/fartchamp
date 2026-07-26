@@ -1,6 +1,6 @@
 # FartChamp 💨🏆
 
-> แพลตฟอร์มแข่งขันเสียงตดที่ยิ่งใหญ่ที่สุดในจักรวาล!
+> The greatest fart sound competition platform in the universe!
 
 [![Deploy](https://img.shields.io/badge/deploy-ready-brightgreen)]()
 [![License](https://img.shields.io/badge/license-MIT-blue)]()
@@ -8,18 +8,18 @@
 
 ## 🌟 Features
 
-- 🎙️ **อัปโหลด / อัดเสียง** — อัปโหลดไฟล์เสียงหรืออัดจากไมค์โฟนในเว็บ
-- ⚔️ **Battle Arena** — แข่ง 1v1 แล้วโหวตให้เสียงที่ชอบ
-- 💨 **ไลค์ & คอมเมนต์** — กดถูกใจและแสดงความคิดเห็นได้
-- 🏆 **Leaderboard** — อันดับ all-time, weekly, monthly
-- 👑 **Champion System** — ระบบแชมป์พร้อม rank ตั้งแต่ "Beginner Blaster" ถึง "The Supreme Cheek Clapper"
-- 🎨 **Dark Mode UI** — ธีมสวยงามพร้อม neon accents และ glassmorphism
+- 🎙️ **Upload / Record** — Upload an audio file or record directly from your browser microphone.
+- ⚔️ **Battle Arena** — Compete in 1v1 matchups and vote for the best sound.
+- 💨 **Likes & Comments** — Show some love and comment on your favorite farts.
+- 🏆 **Leaderboard** — View rankings by all-time, weekly, and monthly periods.
+- 👑 **Champion System** — Rank up from "Beginner Blaster" to "The Supreme Cheek Clapper".
+- 🎨 **Dark Mode UI** — Beautiful dark theme with neon accents and glassmorphism.
 
 ## 🚀 Quick Start
 
 ```bash
 # Clone
-git clone https://github.com/your-username/fartchamp.git
+git clone https://github.com/kengkrup/fartchamp.git
 cd fartchamp
 
 # Install dependencies
@@ -29,7 +29,7 @@ npm install
 npm run dev
 ```
 
-เปิดเบราว์เซอร์ไปที่ `http://localhost:5173` 🎉
+Open your browser and visit `http://localhost:5173` 🎉
 
 ## 🏗️ Tech Stack
 
@@ -61,7 +61,7 @@ src/
 
 ## 🤖 AI Coding Guides (Vibe Coding Ready!)
 
-โปรเจกต์นี้ออกแบบมาเพื่อ Vibe Coding! มีไฟล์ guide สำหรับ AI ทุกตัว:
+This project is built for Vibe Coding! AI guides are available:
 
 | AI Tool | Guide File |
 |---------|-----------|
@@ -72,11 +72,11 @@ src/
 
 ## 🎮 How It Works
 
-1. **อัปโหลดเสียงตด** — อัดจากไมค์หรืออัปโหลดไฟล์เสียง
-2. **ตั้งชื่อ & เลือกประเภท** — เช่น Thunder ⚡, Silent but Deadly 🤫, Musical 🎵
-3. **เข้า Battle Arena** — เสียงตดจะถูกจับคู่แข่ง 1v1
-4. **โหวต & คอมเมนต์** — ผู้ใช้ทุกคนโหวตและแสดงความคิดเห็นได้
-5. **ขึ้น Leaderboard** — สะสมคะแนนจากไลค์ ชนะ Battle และจำนวนครั้งที่ถูกฟัง
+1. **Upload a Fart** — Record from mic or upload an audio file.
+2. **Title & Category** — E.g., Thunder ⚡, Silent but Deadly 🤫, Musical 🎵.
+3. **Enter Battle Arena** — Sounds are matched 1v1.
+4. **Vote & Comment** — Everyone can vote and comment.
+5. **Climb the Leaderboard** — Earn points from likes, wins, and plays.
 
 ## 📊 Scoring System
 
@@ -102,4 +102,4 @@ See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for guidelines.
 
 ## 📄 License
 
-MIT License — ใช้ได้เลย ปล่อยได้เลย 💨
+MIT License — Use it, ship it 💨

@@ -115,7 +115,7 @@ npm run preview  # Preview production build
 ```
 
 ## Important Notes
-- The app uses Thai language (ภาษาไทย) for UI text
+- The app uses English language for UI text
 - Mock data is automatically seeded on first load via `seedMockData()`
 - Audio playback works in demo mode even without actual audio files
 - All animations are CSS-based for performance
