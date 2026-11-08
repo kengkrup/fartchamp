@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { FiWind } from 'react-icons/fi';
 import { APP_NAME } from '../../utils/constants';
 
 export default function Navbar() {
@@ -8,10 +9,10 @@ export default function Navbar() {
   const location = useLocation();
 
   const links = [
-    { path: '/', label: '🏠 Home' },
-    { path: '/battle', label: '⚔️ Battle' },
-    { path: '/upload', label: '🎙️ Upload' },
-    { path: '/leaderboard', label: '🏆 Leaderboard' },
+    { path: '/', label: 'Home' },
+    { path: '/battle', label: 'Battle' },
+    { path: '/upload', label: 'Upload' },
+    { path: '/leaderboard', label: 'Leaderboard' },
   ];
 
   const isActive = (path) =>
@@ -21,7 +22,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="container navbar__inner">
         <Link to="/" className="navbar__logo">
-          <span className="navbar__logo-icon">💨</span>
+          <span className="navbar__logo-icon"><FiWind /></span>
           <span className="gradient-text">{APP_NAME}</span>
         </Link>
 

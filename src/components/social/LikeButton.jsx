@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { FiThumbsUp } from 'react-icons/fi';
 import { hasUserLiked, toggleLike } from '../../services/dataService';
 import { formatNumber } from '../../utils/formatters';
 
@@ -25,8 +26,8 @@ export default function LikeButton({ soundId, initialLikes = 0 }) {
       style={{ position: 'relative' }}
     >
       {animating && <div className="vote-burst" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }} />}
-      <span className="like-btn__icon" style={{ fontSize: '1.1em' }}>
-        {liked ? '💨' : '🌬️'}
+      <span className="like-btn__icon">
+        <FiThumbsUp />
       </span>
       <span className={animating ? 'count-up' : ''}>
         {formatNumber(likes)}

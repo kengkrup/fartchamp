@@ -15,7 +15,7 @@ export default function SoundCard({ sound, showComments = false }) {
     if (navigator.share) {
       navigator.share({
         title: sound.title,
-        text: `Listen to the fart sound "${sound.title}" on FartChamp! 💨`,
+        text: `Listen to "${sound.title}" on FartChamp`,
         url: window.location.origin,
       });
     } else {
@@ -37,7 +37,7 @@ export default function SoundCard({ sound, showComments = false }) {
         </div>
         {category && (
           <span className="badge badge--green sound-card__category">
-            {category.emoji} {category.label.split(' ')[0]}
+            {category.label}
           </span>
         )}
       </div>

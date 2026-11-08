@@ -48,10 +48,10 @@ export default function UploadPage() {
       <div className="container">
         <div className="page-header">
           <h1 className="page-header__title">
-            🎙️ <span className="gradient-text">Upload Fart Sound</span>
+            <span className="gradient-text">Upload Sound</span>
           </h1>
           <p className="page-header__subtitle">
-            Share your fart sound with the world! 💨
+            Share your sound with the community.
           </p>
         </div>
 
@@ -63,14 +63,14 @@ export default function UploadPage() {
               className={`upload-page__tab ${tab === 'upload' ? 'active' : ''}`}
               onClick={() => setTab('upload')}
             >
-              📁 Upload File
+              Upload File
             </button>
             <button
               type="button"
               className={`upload-page__tab ${tab === 'record' ? 'active' : ''}`}
               onClick={() => setTab('record')}
             >
-              🎙️ Record Audio
+              Record Audio
             </button>
           </div>
 
@@ -83,7 +83,7 @@ export default function UploadPage() {
 
           {/* Sound Info */}
           <div className="upload-page__form-group">
-            <label className="upload-page__label">Fart Name *</label>
+            <label className="upload-page__label">Sound Name *</label>
             <input
               type="text"
               className="upload-page__input"
@@ -99,7 +99,7 @@ export default function UploadPage() {
             <label className="upload-page__label">Description</label>
             <textarea
               className="upload-page__input upload-page__textarea"
-              placeholder="Describe your fart sound..."
+              placeholder="Describe your sound..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               maxLength={200}
@@ -116,7 +116,7 @@ export default function UploadPage() {
                   className={`upload-page__category ${category === cat.id ? 'upload-page__category--active' : ''}`}
                   onClick={() => setCategory(cat.id)}
                 >
-                  {cat.emoji} {cat.label.split(' ')[0]}
+                  {cat.label}
                 </button>
               ))}
             </div>
@@ -128,7 +128,7 @@ export default function UploadPage() {
             className="btn btn--primary btn--lg btn--full"
             disabled={!audioData || !title.trim() || submitting}
           >
-            {submitting ? '⏳ Uploading...' : '🚀 Unleash to the Universe!'}
+            {submitting ? 'Uploading...' : 'Publish Sound'}
           </button>
         </form>
       </div>

@@ -43,9 +43,8 @@ export default function BattleArena() {
   if (!currentBattle || !sound1 || !sound2) {
     return (
       <div className="empty-state">
-        <div className="empty-state__icon">⚔️</div>
         <h3 className="empty-state__title">No Battles Available</h3>
-        <p className="empty-state__text">Need at least 2 fart sounds to start a battle.</p>
+        <p className="empty-state__text">At least 2 sounds are required to start a battle.</p>
       </div>
     );
   }
@@ -86,7 +85,7 @@ export default function BattleArena() {
             disabled={alreadyVoted}
             style={{ marginTop: 'var(--space-md)' }}
           >
-            {userVote === sound1.id ? '✅ Voted!' : alreadyVoted ? 'Voted' : '💨 Vote for this!'}
+            {alreadyVoted ? 'Voted' : 'Vote for this sound'}
           </button>
         </div>
 
@@ -124,7 +123,7 @@ export default function BattleArena() {
             disabled={alreadyVoted}
             style={{ marginTop: 'var(--space-md)' }}
           >
-            {userVote === sound2.id ? '✅ Voted!' : alreadyVoted ? 'Voted' : '💨 Vote for this!'}
+            {alreadyVoted ? 'Voted' : 'Vote for this sound'}
           </button>
         </div>
       </div>

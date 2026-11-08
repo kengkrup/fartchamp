@@ -93,7 +93,7 @@ export default function SoundUploader({ onFileSelect }) {
 
       {error && (
         <p style={{ color: 'var(--color-danger)', fontSize: 'var(--text-sm)', marginTop: 'var(--space-sm)' }}>
-          ❌ {error}
+          {error}
         </p>
       )}
     </div>

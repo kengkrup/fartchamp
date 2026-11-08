@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer__inner">
           <div>
             <div className="footer__brand-name">
-              💨 <span className="gradient-text">{APP_NAME}</span>
+              <span className="gradient-text">{APP_NAME}</span>
             </div>
             <p className="footer__brand-desc">{APP_DESCRIPTION}</p>
           </div>
@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>© {new Date().getFullYear()} {APP_NAME}. Made with 💨 and ❤️ | No actual farts were harmed in the making of this website.</p>
+          <p>© {new Date().getFullYear()} {APP_NAME}. All rights reserved.</p>
         </div>
       </div>
     </footer>

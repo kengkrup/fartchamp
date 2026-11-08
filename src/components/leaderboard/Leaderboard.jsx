@@ -24,17 +24,10 @@ export default function Leaderboard() {
     return '';
   };
 
-  const getMedal = (index) => {
-    if (index === 0) return '🥇';
-    if (index === 1) return '🥈';
-    if (index === 2) return '🥉';
-    return null;
-  };
-
   return (
     <div className="leaderboard">
       <div className="leaderboard__header">
-        <h2 className="section__title gradient-text">🏆 Rankings</h2>
+        <h2 className="section__title gradient-text">Rankings</h2>
         <div className="leaderboard__filters">
           {filters.map((f) => (
             <button
@@ -51,9 +44,8 @@ export default function Leaderboard() {
       <div className="stagger-children">
         {items.length === 0 ? (
           <div className="empty-state">
-            <div className="empty-state__icon">🏜️</div>
             <h3 className="empty-state__title">No data yet</h3>
-            <p className="empty-state__text">Upload a fart sound to get on the Leaderboard!</p>
+            <p className="empty-state__text">Upload a sound to appear on the leaderboard.</p>
           </div>
         ) : (
           items.slice(0, 20).map((item, index) => {
@@ -64,7 +56,7 @@ export default function Leaderboard() {
                 className={`leaderboard__item ${getRankClass(index)}`}
               >
                 <div className={`leaderboard__rank ${getRankNumClass(index)}`}>
-                  {getMedal(index) || index + 1}
+                  {index + 1}
                 </div>
 
                 <div className="sound-card__avatar" style={{ width: 40, height: 40, fontSize: 'var(--text-base)' }}>
@@ -74,7 +66,7 @@ export default function Leaderboard() {
                 <div className="leaderboard__info">
                   <div className="leaderboard__name">{item.title}</div>
                   <div className="leaderboard__user">
-                    {item.userName} • {rank.emoji} {rank.title}
+                    {item.userName} • {rank.title}
                   </div>
                 </div>
 
@@ -84,8 +76,8 @@ export default function Leaderboard() {
                     <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>Score</div>
                   </div>
                   <div style={{ display: 'flex', gap: 'var(--space-sm)', fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
-                    <span>💨 {item.likes}</span>
-                    <span>🏆 {item.wins}</span>
+                    <span>{item.likes} likes</span>
+                    <span>{item.wins} wins</span>
                   </div>
                 </div>
               </div>

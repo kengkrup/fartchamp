@@ -16,15 +16,13 @@ export default function LeaderboardPage() {
     return [2, 1, 3][index];
   };
 
-  const crowns = { 1: '👑', 2: '🥈', 3: '🥉' };
-
   return (
     <div className="leaderboard-page">
       <div className="container">
         <div className="page-header">
-          <h1 className="page-header__title">🏆 Leaderboard</h1>
+          <h1 className="page-header__title">Leaderboard</h1>
           <p className="page-header__subtitle">
-            Those with the most powerful farts in the universe
+            The highest scoring sounds on the platform
           </p>
         </div>
 
@@ -36,7 +34,7 @@ export default function LeaderboardPage() {
               return (
                 <div key={item.id} className={`podium-card podium-card--${rank} glass-card`}>
                   <div className={`podium-card__crown ${rank === 1 ? 'crown-shimmer' : ''}`}>
-                    {crowns[rank]}
+                    {rank}
                   </div>
                   <div className="podium-card__avatar">
                     {getInitials(item.userName)}

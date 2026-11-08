@@ -1,77 +1,72 @@
 # FartChamp - Gemini AI Coding Guide
 
-> This file provides Gemini / Antigravity IDE with context about the FartChamp project.
-> Compatible with Gemini, Antigravity, and Google AI tools.
+> Provides Gemini and Antigravity IDE with context about the FartChamp project.
 
-## Quick Context
+## Quick context
 
-**FartChamp** is a humorous web app for fart sound competitions. Users upload sounds, battle 1v1, vote, comment, and compete for champion status.
+FartChamp is a web application for short sound clip competitions. Users upload sounds, battle 1v1, vote, comment, and compete for champion status.
 
-**Stack**: React 19 + Vite + Vanilla CSS + localStorage (Firebase-ready)
+**Stack**: React 19 + Vite + Vanilla CSS + localStorage (prepared for Firebase)
 **Language**: English UI
-**Theme**: Dark mode with toxic green neon (#39ff14) accents
+**Theme**: Dark mode with neon green (#39ff14) accents
 
 ## Architecture
 
 ```
 ┌─────────────────────────────────────────────────┐
-│  Pages (HomePage, BattlePage, UploadPage, etc.) │
+│  Pages (HomePage, BattlePage, UploadPage, ...)   │
 ├─────────────────────────────────────────────────┤
 │  Components                                      │
-│  ├── layout/    → Navbar, Footer, Layout         │
-│  ├── sound/     → Card, Player, Recorder, Upload │
-│  ├── battle/    → BattleArena (1v1 system)       │
-│  ├── social/    → LikeButton, CommentSection     │
-│  └── leaderboard/ → Leaderboard, ChampionBadge  │
+│  ├── layout/    Navbar, Footer, Layout           │
+│  ├── sound/     Card, Player, Recorder, Upload   │
+│  ├── battle/    BattleArena (1v1 system)         │
+│  ├── social/    LikeButton, CommentSection       │
+│  └── leaderboard/ Leaderboard                    │
 ├─────────────────────────────────────────────────┤
 │  Services (dataService.js)                       │
-│  └── localStorage CRUD with Firebase-ready API   │
+│  └── localStorage CRUD behind a service boundary │
 ├─────────────────────────────────────────────────┤
 │  Utils (constants, formatters, audio)            │
 ├─────────────────────────────────────────────────┤
 │  Styles (index.css, animations.css,              │
-│          components.css, pages.css)               │
+│          components.css, pages.css)              │
 └─────────────────────────────────────────────────┘
 ```
 
-## Key Design Decisions
+## Key design decisions
 
-1. **localStorage over Firebase**: For instant dev experience. `dataService.js` has a clean API that maps 1:1 to Firestore operations. Migration is a drop-in replacement.
+1. **localStorage over Firebase**: faster development. `dataService.js` is the single data boundary, so migration replaces one module.
+2. **CSS custom properties**: all design tokens in `:root`. No CSS-in-JS or Tailwind. BEM naming.
+3. **Mock data seeding**: `seedMockData()` creates sample sounds, comments, and battles on first load.
+4. **Demo audio mode**: `SoundPlayer` simulates playback when no audio file is attached.
+5. **Language**: all UI text, variable names, and comments are in English.
 
-2. **CSS Custom Properties**: All design tokens in `:root`. No CSS-in-JS or Tailwind. BEM naming.
+## File reference
 
-3. **Mock Data Seeding**: `seedMockData()` auto-creates 12 sample sounds with English descriptions, comments, and battles on first load.
+### Core files
 
-4. **Demo Audio Mode**: `SoundPlayer` works without actual audio files — simulates playback with timer and animations.
+- `src/router.jsx` - route definitions
+- `src/services/dataService.js` - data operations
+- `src/utils/constants.js` - categories, ranks, config
+- `src/styles/index.css` - design tokens
 
-5. **Language**: All UI text is in English. Variable names and code comments are also in English.
+### Key components
 
-## File Reference
+- `src/components/sound/SoundPlayer.jsx` - audio player with waveform and cloud effects
+- `src/components/battle/BattleArena.jsx` - 1v1 matchup with voting
+- `src/components/leaderboard/Leaderboard.jsx` - filtered ranking display
 
-### Core Files
-- `src/router.jsx` — All routes defined here
-- `src/services/dataService.js` — All data operations (sounds, battles, votes, comments)
-- `src/utils/constants.js` — Categories, ranks, config values
-- `src/styles/index.css` — Design system tokens
+## Coding rules
 
-### Key Components
-- `src/components/sound/SoundPlayer.jsx` — Audio player with waveform + fart cloud effects
-- `src/components/battle/BattleArena.jsx` — 1v1 matchup with voting
-- `src/components/leaderboard/Leaderboard.jsx` — Filtered ranking display
+1. Use CSS custom properties from `index.css` for all colors and spacing.
+2. Follow BEM naming for CSS classes.
+3. Keep UI text in English.
+4. Use `useCallback` for handlers and `useMemo` for derived data.
+5. Default-export all components.
+6. Use `react-icons/fi` (Feather) for iconography.
+7. Avoid inline styles except for dynamic values.
 
-## Coding Rules
-
-When modifying this project:
-
-1. **Use CSS custom properties** from `index.css` for all colors/spacing
-2. **Follow BEM naming** for CSS classes
-3. **Keep English text** for user-facing strings
-4. **Use `useCallback`** for handlers, `useMemo` for derived data
-5. **Export default** for all components
-6. **Use react-icons/fi** (Feather icons) for iconography
-7. **No inline styles** except for dynamic values (calculated positions, etc.)
-
-## Data Schema
+## Data schema
 
 ```javascript
 // Sound
@@ -83,7 +78,7 @@ When modifying this project:
   createdAt
 }
 
-// Battle  
+// Battle
 {
   id, sound1Id, sound2Id,
   sound1Votes, sound2Votes,
@@ -98,12 +93,14 @@ When modifying this project:
 }
 ```
 
-## Available Categories
+## Available categories
+
 `classic`, `thunder`, `silent-deadly`, `musical`, `machine-gun`, `squeaker`, `wet`, `epic`
 
 ## Commands
+
 ```bash
-npm run dev      # Start development server
-npm run build    # Build for production
+npm run dev      # Development server
+npm run build    # Production build
 npm run preview  # Preview production build
 ```

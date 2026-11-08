@@ -27,29 +27,27 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero__bg" />
         <div className="container hero__content">
-          <div className="hero__emoji float">💨</div>
           <h1 className="hero__title">
             <span className="gradient-text">{APP_NAME}</span>
             <br />
             {APP_TAGLINE}
           </h1>
           <p className="hero__subtitle">
-            The greatest fart sound competition platform in the universe!<br />
-            Upload, Battle 1v1, Vote, and become the Champion!
+            Upload a sound, battle 1v1, and compete for the top rank.
           </p>
           <div className="hero__actions">
             <Link to="/upload" className="btn btn--primary btn--lg">
-              🎙️ Upload a Fart
+              Upload a Sound
             </Link>
             <Link to="/battle" className="btn btn--secondary btn--lg">
-              ⚔️ Enter Battle Arena
+              Enter Battle Arena
             </Link>
           </div>
 
           <div className="hero__stats">
             <div className="hero__stat-card">
               <div className="hero__stat-value">{formatNumber(stats.totalSounds)}</div>
-              <div className="hero__stat-label">Farts</div>
+              <div className="hero__stat-label">Sounds</div>
             </div>
             <div className="hero__stat-card">
               <div className="hero__stat-value">{formatNumber(stats.totalPlays)}</div>
@@ -69,8 +67,8 @@ export default function HomePage() {
           <div className="container">
             <div className="section__header">
               <div>
-                <h2 className="section__title">🔥 Top Farts of the Week</h2>
-                <p className="section__subtitle">Most popular fart sounds this week</p>
+                <h2 className="section__title">Top Sounds of the Week</h2>
+                <p className="section__subtitle">Most popular sounds this week</p>
               </div>
               <Link to="/leaderboard?filter=weekly" className="btn btn--text">
                 View All →
@@ -90,8 +88,8 @@ export default function HomePage() {
         <div className="container">
           <div className="section__header">
             <div>
-              <h2 className="section__title">🆕 Latest Farts</h2>
-              <p className="section__subtitle">Newest fart sounds from the community</p>
+              <h2 className="section__title">Latest Sounds</h2>
+              <p className="section__subtitle">Newest sounds from the community</p>
             </div>
           </div>
           <div className="sound-grid">
@@ -110,10 +108,10 @@ export default function HomePage() {
               <span className="gradient-text">Ready to become a Champion?</span>
             </h2>
             <p className="cta__description">
-              Upload your best fart sound and prove your skills in the Battle Arena!
+              Upload your best sound and compete in the Battle Arena.
             </p>
             <Link to="/upload" className="btn btn--primary btn--lg">
-              🚀 Get Started!
+              Get Started
             </Link>
           </div>
         </div>

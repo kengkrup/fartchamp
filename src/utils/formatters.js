@@ -1,4 +1,5 @@
 // Formatting utility functions
+import { RANKS } from './constants';
 
 /**
  * Format a number with compact notation (1.2K, 3.4M)
@@ -44,18 +45,8 @@ export function timeAgo(date) {
  * Get rank info from total likes/wins
  */
 export function getRank(totalScore) {
-  const ranks = [
-    { min: 0, title: 'Beginner Blaster', emoji: '💨' },
-    { min: 10, title: 'Gas Cadet', emoji: '🌀' },
-    { min: 50, title: 'Wind Warrior', emoji: '🌪️' },
-    { min: 100, title: 'Thunder Cheeks', emoji: '⚡' },
-    { min: 250, title: 'Gas Giant', emoji: '🪐' },
-    { min: 500, title: 'Fart Lord', emoji: '👑' },
-    { min: 1000, title: 'The Supreme Cheek Clapper', emoji: '🏆' },
-  ];
-
-  let rank = ranks[0];
-  for (const r of ranks) {
+  let rank = RANKS[0];
+  for (const r of RANKS) {
     if (totalScore >= r.min) rank = r;
   }
   return rank;

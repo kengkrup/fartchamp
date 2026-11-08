@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { createRecorder, stopStream } from '../../utils/audio';
 import { formatDuration } from '../../utils/formatters';
-import { FiMic, FiSquare, FiTrash2, FiCheck } from 'react-icons/fi';
+import { FiMic, FiSquare, FiTrash2, FiCheck, FiCircle } from 'react-icons/fi';
 
 export default function SoundRecorder({ onRecordingComplete }) {
   const [state, setState] = useState('idle'); // idle | recording | preview
@@ -72,9 +72,9 @@ export default function SoundRecorder({ onRecordingComplete }) {
         className={`recorder__visual ${state === 'recording' ? 'recorder__visual--recording record-pulse' : ''}`}
       >
         <span className="recorder__icon">
-          {state === 'idle' && '🎙️'}
-          {state === 'recording' && '🔴'}
-          {state === 'preview' && '✅'}
+          {state === 'idle' && <FiMic />}
+          {state === 'recording' && <FiCircle />}
+          {state === 'preview' && <FiCheck />}
         </span>
       </div>
 
@@ -124,7 +124,7 @@ export default function SoundRecorder({ onRecordingComplete }) {
           fontSize: 'var(--text-sm)',
           color: 'var(--color-text-muted)',
         }}>
-          Record up to 30 seconds 💨
+          Record up to 30 seconds.
         </p>
       )}
     </div>

@@ -349,14 +349,14 @@ export function seedMockData() {
   // Create some mock comments
   const sounds = getAllSounds();
   const sampleComments = [
-    'Greatest fart sound I have ever heard! 💨',
-    'LMAOOO im dead 😂',
-    'A true champion 🏆',
+    'Greatest sound I have ever heard!',
+    'I cannot stop laughing.',
+    'A true champion.',
     'This sound shook the earth!',
-    'Drop the recipe... what did you eat? 🤣',
-    'Bro... you need a license for that.',
+    'What did you eat before this?',
+    'You need a license for that.',
     'This sound changed my life forever.',
-    'Amazing, much respect 🙏',
+    'Amazing, much respect.',
   ];
 
   sounds.forEach((sound) => {

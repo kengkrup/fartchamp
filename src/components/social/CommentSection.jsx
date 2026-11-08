@@ -19,7 +19,7 @@ export default function CommentSection({ soundId }) {
   return (
     <div className="comment-section">
       <h4 className="comment-section__title">
-        💬 Comments ({comments.length})
+        Comments ({comments.length})
       </h4>
 
       <form className="comment-section__form" onSubmit={handleSubmit}>
@@ -39,7 +39,7 @@ export default function CommentSection({ soundId }) {
       <div className="stagger-children">
         {comments.length === 0 ? (
           <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', padding: 'var(--space-lg) 0', fontSize: 'var(--text-sm)' }}>
-            No comments yet. Be the first! 💨
+            No comments yet. Be the first to comment.
           </p>
         ) : (
           comments.map((comment) => (
