@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from 'react';
-import { getSoundById, getActiveBattles, createRandomBattle, voteBattle, hasUserVotedBattle } from '../../services/dataService';
+import { getSoundById, getActiveBattles, createRandomBattle, voteBattle, hasUserVotedBattle, finalizeExpiredBattles } from '../../services/dataService';
 import SoundPlayer from '../sound/SoundPlayer';
 import { formatNumber, getInitials } from '../../utils/formatters';
 import { FiRefreshCw } from 'react-icons/fi';
@@ -9,6 +9,7 @@ export default function BattleArena() {
   const [voted, setVoted] = useState({});
 
   const battles = useMemo(() => {
+    finalizeExpiredBattles();
     let activeBattles = getActiveBattles();
     if (activeBattles.length === 0) {
       // Create some battles if none exist

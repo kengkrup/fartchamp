@@ -57,13 +57,14 @@ export function stopStream(stream) {
 export function getAudioDuration(blob) {
   return new Promise((resolve) => {
     const audio = new Audio();
-    audio.addEventListener('loadedmetadata', () => {
-      resolve(audio.duration);
-    });
-    audio.addEventListener('error', () => {
-      resolve(0);
-    });
-    audio.src = URL.createObjectURL(blob);
+    const url = URL.createObjectURL(blob);
+    const done = (value) => {
+      URL.revokeObjectURL(url);
+      resolve(value);
+    };
+    audio.addEventListener('loadedmetadata', () => done(audio.duration));
+    audio.addEventListener('error', () => done(0));
+    audio.src = url;
   });
 }
 

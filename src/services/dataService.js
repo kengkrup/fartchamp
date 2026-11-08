@@ -111,6 +111,7 @@ export function createSound({ title, description, category, audioUrl, audioDurat
     wins: 0,
     losses: 0,
     createdAt: new Date().toISOString(),
+    lastActivityAt: new Date().toISOString(),
   };
   return create(STORAGE_KEYS.sounds, sound);
 }
@@ -118,7 +119,10 @@ export function createSound({ title, description, category, audioUrl, audioDurat
 export function incrementSoundPlays(id) {
   const sound = getSoundById(id);
   if (sound) {
-    update(STORAGE_KEYS.sounds, id, { plays: sound.plays + 1 });
+    update(STORAGE_KEYS.sounds, id, {
+      plays: sound.plays + 1,
+      lastActivityAt: new Date().toISOString(),
+    });
   }
 }
 
@@ -160,7 +164,10 @@ export function toggleLike(soundId) {
       createdAt: new Date().toISOString(),
     });
     saveAll(STORAGE_KEYS.votes, votes);
-    update(STORAGE_KEYS.sounds, soundId, { likes: sound.likes + 1 });
+    update(STORAGE_KEYS.sounds, soundId, {
+      likes: sound.likes + 1,
+      lastActivityAt: new Date().toISOString(),
+    });
     return true;
   }
 }
@@ -284,6 +291,13 @@ export function completeBattle(battleId) {
   return update(STORAGE_KEYS.battles, battleId, { status: 'completed', winnerId });
 }
 
+export function finalizeExpiredBattles() {
+  const now = Date.now();
+  getAllBattles()
+    .filter((b) => b.status === 'active' && new Date(b.endsAt).getTime() <= now)
+    .forEach((b) => completeBattle(b.id));
+}
+
 // --- Leaderboard ---
 
 export function getLeaderboard(filter = 'all-time') {
@@ -292,10 +306,10 @@ export function getLeaderboard(filter = 'all-time') {
   let filtered = sounds;
   if (filter === 'weekly') {
     const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-    filtered = sounds.filter((s) => new Date(s.createdAt) > weekAgo);
+    filtered = sounds.filter((s) => new Date(s.lastActivityAt || s.createdAt) > weekAgo);
   } else if (filter === 'monthly') {
     const monthAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-    filtered = sounds.filter((s) => new Date(s.createdAt) > monthAgo);
+    filtered = sounds.filter((s) => new Date(s.lastActivityAt || s.createdAt) > monthAgo);
   }
 
   // Score = likes * 2 + wins * 5 + plays

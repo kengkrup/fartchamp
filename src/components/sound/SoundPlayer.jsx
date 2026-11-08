@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { generateWaveform } from '../../utils/audio';
 import { formatDuration } from '../../utils/formatters';
 import { incrementSoundPlays } from '../../services/dataService';
+import { loadAudioBlob } from '../../services/audioStore';
 import { FiPlay, FiPause } from 'react-icons/fi';
 
 export default function SoundPlayer({ soundId, audioUrl, duration }) {
@@ -9,9 +10,12 @@ export default function SoundPlayer({ soundId, audioUrl, duration }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [waveform] = useState(() => generateWaveform(40));
   const [clouds, setClouds] = useState([]);
+  const [loadedUrl, setLoadedUrl] = useState(null);
   const audioRef = useRef(null);
   const cloudIdRef = useRef(0);
+  const demoIntervalRef = useRef(null);
 
+  const effectiveUrl = audioUrl || loadedUrl;
   const progress = duration > 0 ? currentTime / duration : 0;
 
   const spawnCloud = useCallback(() => {
@@ -28,10 +32,17 @@ export default function SoundPlayer({ soundId, audioUrl, duration }) {
     }, 1200);
   }, []);
 
+  const stopDemo = useCallback(() => {
+    if (demoIntervalRef.current) {
+      clearInterval(demoIntervalRef.current);
+      demoIntervalRef.current = null;
+    }
+  }, []);
+
   const togglePlay = useCallback(() => {
-    if (!audioUrl) {
-      // Demo mode: simulate playback
+    if (!effectiveUrl) {
       if (isPlaying) {
+        stopDemo();
         setIsPlaying(false);
         return;
       }
@@ -41,12 +52,12 @@ export default function SoundPlayer({ soundId, audioUrl, duration }) {
 
       let elapsed = 0;
       const totalDuration = duration || 5;
-      const interval = setInterval(() => {
+      demoIntervalRef.current = setInterval(() => {
         elapsed += 0.1;
         setCurrentTime(elapsed);
         if (Math.random() < 0.3) spawnCloud();
         if (elapsed >= totalDuration) {
-          clearInterval(interval);
+          stopDemo();
           setIsPlaying(false);
           setCurrentTime(0);
         }
@@ -66,7 +77,28 @@ export default function SoundPlayer({ soundId, audioUrl, duration }) {
       if (soundId) incrementSoundPlays(soundId);
       spawnCloud();
     }
-  }, [audioUrl, isPlaying, soundId, duration, spawnCloud]);
+  }, [effectiveUrl, isPlaying, soundId, duration, spawnCloud, stopDemo]);
+
+  // Load a persisted blob when the sound has no session-scoped audioUrl.
+  useEffect(() => {
+    if (audioUrl || !soundId) return;
+    let cancelled = false;
+    loadAudioBlob(soundId).then((blob) => {
+      if (!cancelled && blob) {
+        setLoadedUrl(URL.createObjectURL(blob));
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [audioUrl, soundId]);
+
+  useEffect(() => {
+    return () => {
+      stopDemo();
+      if (loadedUrl) URL.revokeObjectURL(loadedUrl);
+    };
+  }, [loadedUrl, stopDemo]);
 
   useEffect(() => {
     if (!audioRef.current) return;
@@ -88,11 +120,11 @@ export default function SoundPlayer({ soundId, audioUrl, duration }) {
       audio.removeEventListener('timeupdate', onTimeUpdate);
       audio.removeEventListener('ended', onEnded);
     };
-  }, [isPlaying, spawnCloud]);
+  }, [isPlaying, spawnCloud, effectiveUrl]);
 
   return (
     <div className="sound-player" style={{ position: 'relative' }}>
-      {audioUrl && <audio ref={audioRef} src={audioUrl} preload="metadata" />}
+      {effectiveUrl && <audio ref={audioRef} src={effectiveUrl} preload="metadata" />}
 
       {/* Fart clouds */}
       {clouds.map((cloud) => (

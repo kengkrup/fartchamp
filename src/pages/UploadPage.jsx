@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import SoundRecorder from '../components/sound/SoundRecorder';
 import SoundUploader from '../components/sound/SoundUploader';
 import { createSound } from '../services/dataService';
+import { saveAudioBlob } from '../services/audioStore';
 import { CATEGORIES } from '../utils/constants';
 
 export default function UploadPage() {
@@ -15,11 +16,11 @@ export default function UploadPage() {
   const [submitting, setSubmitting] = useState(false);
 
   const handleFileSelect = useCallback((file, url, duration) => {
-    setAudioData({ url, duration });
+    setAudioData({ url, duration, blob: file });
   }, []);
 
   const handleRecordingComplete = useCallback((blob, url, duration) => {
-    setAudioData({ url, duration });
+    setAudioData({ url, duration, blob });
   }, []);
 
   const handleSubmit = useCallback((e) => {
@@ -28,14 +29,18 @@ export default function UploadPage() {
 
     setSubmitting(true);
 
-    // Create the sound
-    createSound({
+    // Create the sound, then persist its audio blob separately.
+    const sound = createSound({
       title: title.trim(),
       description: description.trim(),
       category,
-      audioUrl: audioData?.url || null,
+      audioUrl: null,
       audioDuration: audioData?.duration || Math.floor(Math.random() * 10) + 2,
     });
+
+    if (audioData?.blob) {
+      saveAudioBlob(sound.id, audioData.blob);
+    }
 
     // Navigate to home
     setTimeout(() => {
