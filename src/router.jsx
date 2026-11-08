@@ -14,6 +14,13 @@ export const router = createBrowserRouter([
       { path: 'battle', element: <BattlePage /> },
       { path: 'upload', element: <UploadPage /> },
       { path: 'leaderboard', element: <LeaderboardPage /> },
+      { path: '*', element: (
+        <div className="empty-state" style={{ padding: '4rem 0' }}>
+          <div className="empty-state__icon">💨</div>
+          <h3 className="empty-state__title">404 — Lost in the Wind</h3>
+          <p className="empty-state__text">This page does not exist.</p>
+        </div>
+      ) },
     ],
   },
 ]);
